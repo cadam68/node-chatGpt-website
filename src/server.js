@@ -34,7 +34,7 @@ const argv = yargs.argv;
 const port = Number(process.env.PORT || argv.port);
 const app = require("./app");
 const wss = require("./wss");
-wss.init(port+1)
+wss.init(port+1);
 
 // === starting the server ===
 app.listen(port, () => {
