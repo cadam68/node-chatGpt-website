@@ -29,8 +29,8 @@ async function getLinks(URL_base, ws) {
         // console.log(URL, internalPath)
 
         const browser = await puppeteer.launch({
-            headless: 'new',
-            args: ['--no-sandbox'],
+            headless: true,
+            args: ["--no-sandbox"],
         });
         const page = await browser.newPage()
         if(ws) ws.send(JSON.stringify({ type: 'message', level : 'info', value:`analysis ${URL}...` }));
