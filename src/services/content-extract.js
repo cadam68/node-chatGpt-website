@@ -28,7 +28,10 @@ async function getLinks(URL_base, ws) {
         const internalPath = match[1]; // /de/fachthemen
         // console.log(URL, internalPath)
 
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox','--disable-setuid-sandbox'],
+        });
         const page = await browser.newPage()
         if(ws) ws.send(JSON.stringify({ type: 'message', level : 'info', value:`analysis ${URL}...` }));
         await page.goto(URL)
