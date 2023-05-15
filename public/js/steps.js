@@ -26,19 +26,19 @@ const stepsController = (() => {
         let btnElt = document.getElementById(btnEltId);
         let sectionElt = document.getElementById(sectionEltId);
 
-        // btnElt.setAttribute('disabled', 'true');            // disabled all btn items
+        btnElt.setAttribute('disabled', 'true');            // disabled all btn items
 
         activated.onChange((value, oldValue) => {
             // Log.debug(`[${btnEltId}].value : ${oldValue} -> ${value}`)
             if(value) {
                 btnElt.classList.add('active');
                 sectionElt.classList.add('active');
-                btnElt.setAttribute('disabled', 'true');         // manually activated
+                // btnElt.setAttribute('disabled', 'true');         // manually activated
                 sectionElt.removeAttribute('disabled');
             } else {
                 btnElt.classList.remove('active');
                 sectionElt.classList.remove('active');
-                btnElt.removeAttribute('disabled');              // manually activated
+                // btnElt.removeAttribute('disabled');              // manually activated
                 sectionElt.setAttribute('disabled', 'true');
             }
             if(value!==oldValue&&value) resetExcept(btnEltId, groupdId);

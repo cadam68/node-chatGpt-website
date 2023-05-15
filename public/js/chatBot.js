@@ -91,7 +91,8 @@ const ChatBotView = (inputEL, formEL, progressBtn, messages, questionTemplate, a
         }
     });
 
-    inputEL.value = 'Ab welche Qualitatssicherungsstufe kann die Brandschutzbehorde verlangen ?';
+    // inputEL.value = 'Ab welche Qualitatssicherungsstufe kann die Brandschutzbehorde verlangen ?';
+    inputEL.value = 'ist Holz ein gut baustoff ?';
 
     return {fetchFn, updateHtml}
 }

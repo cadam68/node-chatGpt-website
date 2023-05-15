@@ -42,8 +42,7 @@ const loadDBFn = async (ws) => {
     const nbJS=ls.length;
     if (ws) ws.send(JSON.stringify({type: 'message', level: 'info', value: `${nbJS} files to upload in pinecone...` }));
 
-    for (const art of ls.map(f => srcDirJs + f)
-        .map(f => require(f))) {
+    for (const art of ls.map(f => srcDirJs + f).map(f => require(f))) {
         const idx = ls.map(f => srcDirJs + f).map(f => require(f)).indexOf(art);
         await loadOnDb(art, idx + 1);
         nbJSUploaded++;

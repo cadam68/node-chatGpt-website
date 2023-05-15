@@ -50,10 +50,11 @@ async function getAnswer(quest, ws) {
         if(ws) ws.send(JSON.stringify({ type: 'message', level : 'info', value:`identify the related article : ${targetContent}` }));
         if(ws) ws.send(JSON.stringify({ type: 'progress', percentComplete: 33 }));
 
-        let dataContent =fs.readFileSync(srcDir+targetContent+'.js');
-        const article = dataContent.toString().substring(0,5000);
-        console.log(article);
-        console.log(quest);
+        let dataContent = require(srcDir+targetContent+'.js')
+        const article = dataContent.article.substring(0,5000);
+
+        // console.log(article);
+        // console.log(quest);
 
         if(ws) ws.send(JSON.stringify({ type: 'progress', percentComplete: 66 }));
 
