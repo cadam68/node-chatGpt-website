@@ -1,0 +1,1 @@
+this folder contains the pdf converted to js object files

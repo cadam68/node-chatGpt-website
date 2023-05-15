@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Kalam:wght@300&display=swap" rel="stylesheet">
+    <link rel='icon' href='/img/favicon.png'>
+    <link rel='stylesheet' href='/css/styles.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.1.0/mustache.min.js"></script>
+    <script type="module" src="/js/starter.js"></script>
+    <!-- message templates -->
+    <script id="question-template" type="text/html">
+    <div class='question'>
+        <div class="message-icon"><svg class="icon color-question"><use xlink:href="/img/chatbox.svg#icon"></use></svg></div>
+        <div class="message-text">\{{message}}</div>
+    </div>
+    </script>
+    <script id="answer-template" type="text/html">
+    <div class="answer">
+        <div class="message-text">\{{message}}</div>
+        <div class="message-icon"><svg class="icon color-answer flip"><use xlink:href="/img/chatbox.svg#icon"></use></svg></div>
+    </div>
+    </script>
+</head>
+<body>
+<div class="main-content">
+    {{>header}}
+
+    <div id="popup-container"></div>
+    <div id="section-extractPdf" class="container step-container" disabled="true">
+        <h2>Web Site Content Extract as pdf</h2>
+        <form id="submit-extract">
+            <input id="input-url" class="inp" placeholder="URL" type="url" maxlength="40" size="41" required/>
+            <button id="btn-submit-extract" class="btn-progress">Extract As PDF</button>
+        </form>
+        <p class='results'>
+            <span id="results-extract-label"></span>
+            <span id="results-extract-number"></span>
+        </p>
+    </div>
+
+    <div id="section-pdfToJs" class="container step-container" disabled="true">
+        <h2>Pdf Extract content as JS</h2>
+        <button id="btn-submit-pdfExtract" class="btn-progress">Convert Pdf to JS</button>
+        <p class='results'>
+            <span id="results-pdfExtract"></span>
+        </p>
+    </div>
+
+    <div id="section-loadDB" class="container step-container" disabled="true">
+        <h2>Load Content to DB</h2>
+        <button id="btn-submit-loadDB" class="btn-progress">Load to DB</button>
+        <p class='results'>
+            <span id="results-loadDB"></span>
+        </p>
+    </div>
+
+    <div id="section-chat" class="container step-container" disabled="true">
+        <h2>ChatBot</h2>
+        <div class="chat__main">
+            <div id="messages" class='chat__messages'></div>
+            <div class="compose">
+                <form id="submit-chat">
+                    <input id="input-text" class="inp" placeholder="Enter your question" type="text" maxlength="100"
+                           size="101" required autocomplete="off"/>
+                    <button id="btn-submit-chat" class="btn-progress">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{>footer}}
+</body>
+</html>
