@@ -21,7 +21,7 @@ const writejs = async (art) => {
         t += "`\n\n const title =`" + title + "`"
         t += "\n\n module.exports = {article, title}"
         // delete the file locally
-        fs.unlinkSync(fileName);
+        if(fs.existsSync(fileName)) fs.unlinkSync(fileName);
         fs.writeFileSync(fileName, t);
     }).catch(err => console.log(err))
 
