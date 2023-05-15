@@ -16,7 +16,7 @@ const savePdf = async (url, title) => {
     const page = await browser.newPage()
     await page.goto(URL)
     // delete the file locally
-    fs.unlinkSync(fileName);
+    if (path.existsSync(fileName)) fs.unlinkSync(fileName);
     await page.pdf({ path: fileName})
     await browser.close()
 }
