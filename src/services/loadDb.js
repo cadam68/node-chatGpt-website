@@ -33,7 +33,10 @@ const loadOnDb = async (art, idx) => {
 
 
 const loadDBFn = async (ws) => {
-    let ls = fs.readdirSync(srcDirJs).slice(0, 40);  // limit during development phase
+    let ls = fs.readdirSync(srcDirJs).filter(file => {
+        const extension = path.extname(file);
+        return extension === '.js';
+    }).slice(0, 40);    // limit during development phase
 
     let nbJSUploaded=0;
     const nbJS=ls.length;
