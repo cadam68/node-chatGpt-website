@@ -2,6 +2,8 @@ const chalk = require("chalk");
 const pathParse = require("path-parse");
 const yargs = require("yargs")(process.argv.slice(2));
 const path = require("path");
+const { createServer } = require("http");
+const serverWebSocket = require("./server-websocket");
 
 // -- definition of global settings --
 global.__basedir = path.join(__dirname, "..");
@@ -32,12 +34,12 @@ yargs
 const argv = yargs.argv;
 
 const port = Number(process.env.PORT || argv.port);
-const app = require("./app");
-const wss = require("./wss");
-wss.init(port+1);
+const serverExpress = require("./server-express");
+const httpServer = createServer(serverExpress);
+serverWebSocket.init(httpServer);
 
 // === starting the server ===
-app.listen(port, () => {
+httpServer.listen(port, () => {
   console.log(
     `${chalk.bold.inverse.green(
       " Success "

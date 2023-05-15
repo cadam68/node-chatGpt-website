@@ -1,13 +1,12 @@
 const WebSocket = require('ws');
 
-let wss;
+let serverWebsocket;
 let connections = {};
 let connectionIDCounter = 1;
 
-const init = (port) => {
-    console.log(`Start WebSocket on port ${port}`)
-    wss = new WebSocket.Server({ port });
-    wss.on('connection', function(ws) {
+const init = (httpServer) => {
+    serverWebsocket = new WebSocket.Server({server: httpServer});
+    serverWebsocket.on('connection', function(ws) {
         console.log('Client connecté');
         ws.id = connectionIDCounter ++;
         connections[ws.id] = ws;

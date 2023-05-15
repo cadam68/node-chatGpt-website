@@ -5,9 +5,7 @@ export { ExtractPdfView }
 
 const ExtractPdfView = (inputEL, formEL, resultLabel, result, progressBtn, submitCallback)=> {
 
-    const wsPort = Number(location.port) + 1;
-    Log.info(`create WebSocket(port=${wsPort})`);
-    const wsProgress = new WebSocket(`ws://localhost:${wsPort}`);
+    const wsProgress = new WebSocket(location.origin.replace(/^http/, 'ws'));
     let wsId=-1;
 
     function updateProgressBar(progress) {

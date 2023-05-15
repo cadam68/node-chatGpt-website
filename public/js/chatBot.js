@@ -5,9 +5,7 @@ export {ChatBotView}
 
 const ChatBotView = (inputEL, formEL, progressBtn, messages, questionTemplate, answerTemplate) => {
 
-    const wsPort = Number(location.port) + 1;
-    Log.info(`create WebSocket(port=${wsPort})`);
-    const wsProgress = new WebSocket(`ws://localhost:${wsPort}`);
+    const wsProgress = new WebSocket(location.origin.replace(/^http/, 'ws'));
     let wsId = -1;
 
     function updateProgressBar(progress) {

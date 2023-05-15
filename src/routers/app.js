@@ -7,7 +7,7 @@ const { loadDBFn } = require('../services/loadDb');
 const { hbsProperties } = require("../config/app.config");
 const log4js = require("../services/log4j");
 let logger = log4js.getLogger("app     ");
-const { getWs } = require("../wss");
+const { getWs } = require("../server-websocket");
 
 // --- Pages ---
 router.get("", (req, res) => {
