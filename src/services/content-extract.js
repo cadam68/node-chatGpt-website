@@ -9,7 +9,10 @@ const srcDir = path.join(__basedir, "/data/articles_pdf/");
 const savePdf = async (url, title) => {
     const URL = url
     const fileName = srcDir + title + ".pdf"
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ["--no-sandbox"],
+    });
     const page = await browser.newPage()
     await page.goto(URL)
     // delete the file locally
