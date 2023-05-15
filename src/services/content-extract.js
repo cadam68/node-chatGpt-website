@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require("path");
-const maxFiles = -1;        // -1 : all content
+const maxFiles = 10;        // -1 : all content
 // require('events').EventEmitter.defaultMaxListeners = maxFiles;
 
 const srcDir = path.join(__basedir, "/data/articles_pdf/");
