@@ -32,7 +32,7 @@ const ExtractPdfView = (inputEL, formEL, resultLabel, result, progressBtn, submi
 
     const fetchFn = (val, callback) => {
         updateProgressBar(0);
-        fetch('http://localhost/contentExtract?wsId='+wsId+'&url=' +encodeURI(val))
+        fetch('/contentExtract?wsId='+wsId+'&url=' +encodeURI(val))
             .then(response=> response.json()
             .then(data=> callback(data) ));
     }

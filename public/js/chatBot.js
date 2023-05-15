@@ -34,7 +34,7 @@ const ChatBotView = (inputEL, formEL, progressBtn, messages, questionTemplate, a
         autoscroll();
         inputEL.value = '';
 
-        let response = await fetch('http://localhost/chat?wsId=' + wsId + '&question=' + encodeURI(val))
+        let response = await fetch('/chat?wsId=' + wsId + '&question=' + encodeURI(val))
         let data = await response.json();
         callback(data);
     }

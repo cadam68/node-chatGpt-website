@@ -29,7 +29,7 @@ const CallApiView = (result, progressBtn, route, submitCallback) => {
 
     const fetchFn = (callback) => {
         updateProgressBar(0);
-        fetch('http://localhost/'+route+'?wsId='+wsId)
+        fetch('/'+route+'?wsId='+wsId)
             .then(response=> response.json()
             .then(data=> callback(data) ));
     }
