@@ -1,6 +1,6 @@
 
-import { Observable } from "./utils/observable.js";
-import * as Log from "./utils/log4js.js";
+import { Observable } from "./observable.js";
+import * as Log from "./log4js.js";
 
 export { stepsController };
 

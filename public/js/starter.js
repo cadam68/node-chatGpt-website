@@ -1,7 +1,7 @@
 import { ExtractPdfView } from "./extractPdf.js";
 import { ChatBotView } from "./chatBot.js";
 import { CallApiView } from './callApi.js';
-import { stepsController } from './steps.js'
+import { stepsController } from './utils/steps.js'
 
 stepsController.register("btn-extractPdf","section-extractPdf", 1);
 stepsController.register("btn-pdfToJs","section-pdfToJs", 1);

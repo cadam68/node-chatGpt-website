@@ -231,3 +231,19 @@ export const escapeDialogs = () => {
 };
 
 export const equalId = (obj, id) => obj.id === id;
+
+export const typeWriter = (eltId, text, speed=20, i=0) => {
+  if (i < text.length) {
+    let token = text.charAt(i);
+    document.getElementById(eltId).innerHTML += token;
+    i+=token.length;
+    setTimeout(function() { typeWriter(eltId, text, speed, i) }, speed);
+  }
+}
+
+export const generateUID = () => {
+  var timestamp = Date.now().toString(); // Get the current timestamp
+  var randomNum = Math.random().toString().substr(2, 5); // Generate a random number
+  var uid = timestamp + randomNum; // Combine timestamp and random number
+  return uid;
+}

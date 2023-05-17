@@ -7,14 +7,19 @@ let connectionIDCounter = 1;
 const init = (httpServer) => {
     serverWebsocket = new WebSocket.Server({server: httpServer});
     serverWebsocket.on('connection', function(ws) {
+        let interval;
         console.log('Client connecté');
         ws.id = connectionIDCounter ++;
         connections[ws.id] = ws;
         ws.send(JSON.stringify({ type: 'id', id: ws.id }));
         ws.on("close", () => {
+            if (interval) clearInterval(interval)
             console.log("Client ["+ws.id+"] disconnected");
             delete connections[ws.id];
         });
+        interval = setInterval(()=> {
+            ws.send("pinging")
+        }, 25000);
     });
 }
 

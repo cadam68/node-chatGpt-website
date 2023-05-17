@@ -1,5 +1,7 @@
 import {showPopup} from "./utils/popups.js";
 import * as Log from "./utils/log4js.js";
+import {generateUID, typeWriter} from "./utils/general.js";
+
 export {ChatBotView}
 
 
@@ -72,10 +74,14 @@ const ChatBotView = (inputEL, formEL, progressBtn, messages, questionTemplate, a
             return;
         }
 
+        const msgUid =  `answer-${generateUID()}`;
         const html = Mustache.render(answerTemplate, {
-            message: data.answer,
+            // message: data.answer,
+            message: '',
+            messageId: msgUid,
         });
         messages.insertAdjacentHTML('beforeend', html);
+        typeWriter(msgUid, data.answer);
         autoscroll();
     }
 
