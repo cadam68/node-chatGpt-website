@@ -12,7 +12,7 @@ export const LEVEL_INFO = 2;
 export const LEVEL_LOG = 3;
 export const LEVEL_DEBUG = 4;
 
-let logLevel = LEVEL_DEBUG;
+let logLevel = LEVEL_LOG;
 
 export const setLogLevel = (level = LEVEL_INFO) => (logLevel = level);
 export const getLogLevel = () => logLevel;
