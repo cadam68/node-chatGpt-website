@@ -18,7 +18,7 @@ const init = (httpServer) => {
             delete connections[ws.id];
         });
         interval = setInterval(()=> {
-            ws.send("pinging")
+            ws.send(JSON.stringify({ type: 'ping' }));
         }, 25000);
     });
 }
