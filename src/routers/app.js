@@ -132,6 +132,57 @@ const chatBot = async (query, res) => {
   }
 }
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     ChatResponse:
+ *       type: object
+ *       properties:
+ *         answer:
+ *           type: string
+ *     Error:
+ *       type: object
+ *       properties:
+ *         error:
+ *           type: string
+ */
+
+/**
+ * @swagger
+ * /chat:
+ *   get:
+ *     summary: Get chat response
+ *     description: Get response from chat based on WebSocket ID and question
+ *     parameters:
+ *       - name: wsId
+ *         in: query
+ *         description: WebSocket ID
+ *         required: false
+ *         schema:
+ *           type: integer
+ *       - name: question
+ *         in: query
+ *         description: User's question
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ChatResponse'
+ *       400:
+ *         description: Bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Internal server error
+ */
 router.get("/chat", ({query}, res) => {
   logger.info(`access by get to 'contentExtract' page with query=${JSON.stringify(query)}`);
   chatBot(query, res);

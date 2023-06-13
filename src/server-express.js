@@ -7,8 +7,29 @@ const appRouter = require("./routers/app");
 const maintenanceMiddleware = require("./middlewares/maintenance");
 const logMiddleware = require("./middlewares/log");
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
 // Create the Express application
 const app = express();
+
+// Swagger configuration options
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Pinecone-chatbot',
+            version: '1.0.0',
+            description: 'API documentation',
+        },
+    },
+    apis: [path.join(__dirname, "/routers/*.js")], // Path to your API route files
+};
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 
 // --- configuring express ---
 app.use(express.json()); // parse requests of content-type - application/json

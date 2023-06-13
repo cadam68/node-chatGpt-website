@@ -27,6 +27,8 @@
     "pdf-extraction": "^1.0.2",
     "puppeteer": "^18.1.0",
     "replace-special-characters": "^1.2.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
     "ws": "^8.13.0",
     "yargs": "^17.3.1"
   },

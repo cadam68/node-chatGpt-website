@@ -232,12 +232,22 @@ export const escapeDialogs = () => {
 
 export const equalId = (obj, id) => obj.id === id;
 
-export const typeWriter = (eltId, text, speed=20, i=0) => {
+export const typeWriter = (eltId, text="", speed=20, i=0) => {
   if (i < text.length) {
     let token = text.charAt(i);
     document.getElementById(eltId).innerHTML += token;
     i+=token.length;
     setTimeout(function() { typeWriter(eltId, text, speed, i) }, speed);
+  }
+}
+
+export const typeWriterWords = (eltId, text, speed=100, i=0) => {
+  if(typeof text === 'string') text=text.split(" ");
+  if (i < text.length) {
+    let currentWord = text[i];
+    document.getElementById(eltId).innerHTML += currentWord + " ";
+    i++;
+    setTimeout(function() { typeWriterWords(eltId, text, speed, i) }, speed);
   }
 }
 
